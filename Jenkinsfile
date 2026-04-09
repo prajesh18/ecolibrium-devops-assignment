@@ -24,7 +24,7 @@ pipeline {
             steps {
                 dir('terraform') {
                     sh '''
-                    terraform init -reconfigure -input=false -migrate-state
+                    terraform init -migrate-state -input=false
                     terraform plan -out=tfplan
                     terraform apply -auto-approve tfplan
                     '''
