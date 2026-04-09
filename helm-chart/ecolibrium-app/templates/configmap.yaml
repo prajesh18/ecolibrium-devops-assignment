@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "ecolibrium-app.fullname" . }}-config
+data:
+  APP_ENV: "dev"
+  APP_MESSAGE: "Hello from ConfigMap"
