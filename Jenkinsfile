@@ -24,7 +24,7 @@ pipeline {
             steps {
                 dir('terraform') {
                     sh '''
-                    terraform init
+                    terraform init -reconfigure -input=false
                     terraform plan -out=tfplan
                     terraform apply -auto-approve tfplan
                     '''
