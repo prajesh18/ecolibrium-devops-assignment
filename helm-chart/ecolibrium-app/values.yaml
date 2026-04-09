@@ -114,6 +114,7 @@ volumes:
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: 
  - name: app-volume
+   mountPath: "/usr/share/nginx/html"
 #   readOnly: true
 
 nodeSelector: {}
