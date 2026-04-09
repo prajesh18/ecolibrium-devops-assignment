@@ -85,6 +85,9 @@ resources: {}
   #   memory: 128Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+envFrom:
+  - configMapRef:
+      name: ecolibrium-app-config
 livenessProbe:
   httpGet:
     path: /index.html
@@ -110,7 +113,7 @@ autoscaling:
 volumes: 
   - name: app-volume
     configMap:
-      name: release-name-ecolibrium-app-config
+      name: ecolibrium-app-config
       items:
         - key: index.html
           path: index.html
