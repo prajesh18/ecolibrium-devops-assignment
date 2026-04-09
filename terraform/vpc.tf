@@ -1,3 +1,4 @@
+# ---------------- VPC ----------------
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
 
@@ -5,6 +6,9 @@ resource "aws_vpc" "main" {
     Name = "ecolibrium-vpc"
   }
 }
+
+
+# ---------------- SUBNETS ----------------
 resource "aws_subnet" "public" {
   count = length(var.public_subnets)
 
@@ -38,6 +42,9 @@ resource "aws_subnet" "private" {
     "kubernetes.io/role/internal-elb" = "1"
   }
 }
+
+
+# ---------------- INTERNET ACCESS ----------------
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
@@ -62,6 +69,9 @@ resource "aws_nat_gateway" "nat" {
 
   depends_on = [aws_internet_gateway.igw]
 }
+
+
+# ---------------- ROUTING ----------------
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
