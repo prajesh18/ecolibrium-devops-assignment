@@ -120,7 +120,7 @@ volumeMounts:
   - name: app-volume
     mountPath: /usr/share/nginx/html/index.html
     subPath: index.html
-#   readOnly: true
+  #   readOnly: true
 
 nodeSelector: {}
 
