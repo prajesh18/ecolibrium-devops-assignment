@@ -16,7 +16,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/prajesh18/ecolibrium-devops-assignment.git'
+                git branch: 'main', url: 'https://github.com/prajesh18/ecolibrium-devops-assignment.git'
             }
         }
 
