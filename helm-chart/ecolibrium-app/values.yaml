@@ -109,12 +109,17 @@ autoscaling:
 # Additional volumes on the output Deployment definition.
 volumes: 
  - name: app-volume
-   emptyDir: {}
+   configMap:
+      name: {{ include "ecolibrium-app.fullname" . }}-config
+      items:
+        - key: index.html
+          path: index.html
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: 
  - name: app-volume
-   mountPath: "/usr/share/nginx/html"
+   mountPath: /usr/share/nginx/html/index.html
+   subPath: index.html
 #   readOnly: true
 
 nodeSelector: {}
