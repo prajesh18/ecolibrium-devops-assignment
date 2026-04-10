@@ -118,7 +118,7 @@ aws ecr create-repository \
 
 Access Jenkins:
 
-http://<public-ip>:8080
+http://<EC2-PUBLIC-IP>:8080
 
 Setup Steps:
 Unlock Jenkins
@@ -148,11 +148,15 @@ Ingress controller is installed
 
 # Step 8: Access Application
 
-Get Ingress LoadBalancer
+Get Ingress LoadBalancer:
+
 kubectl get svc -n ingress-nginx
-Update Hosts File(sudo vi /etec/hosts in your windows machine)
+
+Update /etc/hosts (Windows or Linux):
+
 <LOAD_BALANCER_IP> ecolibrium.local
-Access Application
+
+Access:
 
 http://ecolibrium.local
 
@@ -163,7 +167,9 @@ Jenkins runs Terraform and AWS commands using:
 ### IAM credentials configured via:
 
 aws configure
+
 These credentials allow:
+
 Provisioning infrastructure (Terraform)
 Pushing images to ECR
 Managing EKS cluster
@@ -174,3 +180,5 @@ kubectl get nodes
 kubectl get pods -A
 kubectl get svc -A
 kubectl get ingress -A
+
+Access http://ecolibrium.local
